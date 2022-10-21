@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Signin from "./Components/Signin";
+import Signup from "./Components/Signup";
+// import NoteState from "./NoteState";
+import { createContext, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+export const noteContext = createContext();
 
 function App() {
+  const [data, setData] = useState([]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div>
+        {/* <NoteState> */}
+
+        <noteContext.Provider value={{ data, setData }}>
+          <Routes>
+            <Route path="/" element={<Signup />} />
+            <Route path="/Signin" element={<Signin/>}/>
+          </Routes>
+        </noteContext.Provider>
+
+        {/* </NoteState> */}
+      </div>
+    </>
   );
 }
 
