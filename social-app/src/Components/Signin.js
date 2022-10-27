@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router";
-// import { Link } from "react-router-dom";
 
 function Signin() {
+  // UseState for input values
   const [username, setUSername] = useState("");
   const [pass, setPass] = useState("");
+  // useNavigate for navigation
   let navigate = useNavigate();
 
   const userHandler = (e) => {
@@ -17,16 +18,28 @@ function Signin() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    let user = JSON.parse(localStorage.getItem(username));
-    console.log("LOGIN", user);
-    // let pass=JSON.parse(localStorage.getItem(pass))
-    for (let i = 0; i < user.length; i++) {
-      if (user[i].username === username && user[i].pass === pass) {
-        alert("MIl Gya");
-        navigate("/Feed");
-      }
+    // Get data from local storage
+    var user = JSON.parse(localStorage.getItem("username"));
+    let users = user;
+    console.log(users[0]);
+    // Check Validation
+    if (username === "") {
+      alert("Username Field Can Not Be Empty");
+      document.getElementById("username").focus();
+    } else if (pass === "") {
+      alert("Password Field Can Not Be Empty");
+      document.getElementById("pass").focus();
+    } else if (users[0].username !== username) {
+      alert("Wrong Username");
+      document.getElementById("username").focus();
+    } else if (users[0].pass !== pass) {
+      alert("Wrong Password");
+      document.getElementById("pass").focus();
+    } else if (users[0].username === username && users[0].pass === pass) {
+      alert("Login Successfully");
+      // Navigate to feed page
+      navigate("/Feed");
     }
-    console.log("LOGIN", user[0].username);
   };
 
   return (
@@ -38,6 +51,7 @@ function Signin() {
           <div className="inputContainer">
             <input
               onChange={userHandler}
+              id="username"
               type="text"
               className="input"
               placeholder="a"
@@ -50,6 +64,7 @@ function Signin() {
           <div className="inputContainer">
             <input
               onChange={passHandler}
+              id="pass"
               type="text"
               className="input"
               placeholder="a"
@@ -59,14 +74,12 @@ function Signin() {
             </label>
           </div>
 
-          {/* <Link to="/Feed"> */}
           <input
             onClick={submitHandler}
             type="submit"
             className="submitBtn"
             value="Login"
           />
-          {/* </Link> */}
         </form>
       </div>
     </div>

@@ -12,17 +12,14 @@ function App() {
   return (
     <>
       <div>
-        {/* <NoteState> */}
-
+        {/* Pass useState as props in context api */}
         <noteContext.Provider value={{ data, setData }}>
           <Routes>
             <Route path="/" element={<Signup />} />
-            <Route path="/Signin" element={<Signin/>}/>
-            <Route path="/Feed" element={<Feed/>}/>
+            <Route path="/Signin" element={<Signin />} />
+            <Route path="/Feed" element={<Feed />} />
           </Routes>
         </noteContext.Provider>
-
-        {/* </NoteState> */}
       </div>
     </>
   );

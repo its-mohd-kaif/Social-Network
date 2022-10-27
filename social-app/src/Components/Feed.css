@@ -1,0 +1,36 @@
+.feedContainer {
+  width: 50%;
+  text-align: center;
+  margin-left: 25%;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: rgb(219, 218, 218);
+}
+.inputField {
+  width: 40%;
+  margin-left: 30%;
+}
+.inputText {
+  width: 100%;
+  height: 2em;
+}
+.fileInput {
+  margin-left: 30%;
+}
+.addBtn {
+  padding: 10px 25px;
+  background-color: blue;
+  color: white;
+  font-size: large;
+  border: none;
+  border-radius: 13px;
+}
+ul {
+  list-style-type: none;
+}
+img {
+  max-width: 30%;
+}
+hr {
+  margin-right: 10%;
+}

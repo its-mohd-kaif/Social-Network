@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './Feed.css'
+import "./Feed.css";
 
 function Feed() {
   const [text, setText] = useState("");
@@ -29,25 +29,36 @@ function Feed() {
   };
 
   return (
-    <div>
-      <h1>Feeds Page</h1>
-      <input
-        onChange={textHandler}
-        type={"text"}
-        placeholder="Type Something..."
-      />
+    <div className="feedContainer">
+      <h1>Feed Page</h1>
+      <div className="inputField">
+        Type
+        <input className="inputText"
+          onChange={textHandler}
+          type={"text"}
+          placeholder="Type Something..."
+          autoFocus
+        />
+      </div>
+
       <br></br>
       <br></br>
-      <input onChange={onImageChange} type={"file"} />
+      <input className="fileInput" onChange={onImageChange} type={"file"} />
       <br></br>
       <br></br>
-      <button onClick={submitHandler}>Submit</button>
+      <button className="addBtn" onClick={submitHandler}>
+        ADD
+      </button>
 
       <ul>
         {data.map((item) => (
           <ul>
-            <li>{item.text}</li>
+            <li>
+              <h3>{item.text}</h3>
+            </li>
+
             <li>{<img src={item.image} alt="" />}</li>
+            <hr></hr>
           </ul>
         ))}
       </ul>
