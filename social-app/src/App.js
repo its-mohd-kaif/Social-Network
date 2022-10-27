@@ -4,6 +4,7 @@ import Signup from "./Components/Signup";
 // import NoteState from "./NoteState";
 import { createContext, useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import Feed from "./Components/Feed";
 export const noteContext = createContext();
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Signup />} />
             <Route path="/Signin" element={<Signin/>}/>
+            <Route path="/Feed" element={<Feed/>}/>
           </Routes>
         </noteContext.Provider>
 

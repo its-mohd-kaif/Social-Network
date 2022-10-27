@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
+// import { Link } from "react-router-dom";
 
 function Signin() {
   const [username, setUSername] = useState("");
   const [pass, setPass] = useState("");
+  let navigate = useNavigate();
 
   const userHandler = (e) => {
     setUSername(e.target.value);
@@ -15,9 +18,12 @@ function Signin() {
   const submitHandler = (e) => {
     e.preventDefault();
     let user = JSON.parse(localStorage.getItem(username));
+    console.log("LOGIN", user);
+    // let pass=JSON.parse(localStorage.getItem(pass))
     for (let i = 0; i < user.length; i++) {
-      if (user[i].username === username) {
+      if (user[i].username === username && user[i].pass === pass) {
         alert("MIl Gya");
+        navigate("/Feed");
       }
     }
     console.log("LOGIN", user[0].username);
@@ -53,12 +59,14 @@ function Signin() {
             </label>
           </div>
 
+          {/* <Link to="/Feed"> */}
           <input
             onClick={submitHandler}
             type="submit"
             className="submitBtn"
             value="Login"
           />
+          {/* </Link> */}
         </form>
       </div>
     </div>
