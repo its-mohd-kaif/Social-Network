@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { noteContext } from "../App";
 import "./Signup.css";
@@ -16,6 +16,8 @@ function Signup() {
   const [city, setCity] = useState("");
 
   const [pincode, setPincode] = useState("");
+
+  let navigate = useNavigate();
 
   const nameHandler = (e) => {
     setName(e.target.value);
@@ -38,7 +40,7 @@ function Signup() {
   const pinHandler = (e) => {
     setPincode(e.target.value);
   };
-// Obj that holds all input values
+  // Obj that holds all input values
   let obj = {
     name: name,
     email: email,
@@ -105,6 +107,15 @@ function Signup() {
       data1.setData([...data1.data]);
       // Push data into local storage
       localStorage.setItem("username", JSON.stringify(data1.data));
+      setName("");
+      setEmail("");
+      setUsername("");
+      setPass("");
+      setMobile("");
+      setPincode("");
+      setCity("");
+
+      navigate("/Signin");
     }
   };
 
@@ -120,6 +131,7 @@ function Signup() {
               type="text"
               className="input"
               placeholder="a"
+              value={name}
             />
             <label for="" className="label">
               Full Name
@@ -132,6 +144,7 @@ function Signup() {
               type="text"
               className="input"
               placeholder="a"
+              value={email}
             />
             <label for="" className="label">
               Email
@@ -144,6 +157,7 @@ function Signup() {
               type="text"
               className="input"
               placeholder="a"
+              value={username}
             />
             <label for="" className="label">
               Username
@@ -153,9 +167,10 @@ function Signup() {
             <input
               onChange={passHandler}
               id="pass"
-              type="text"
+              type="password"
               className="input"
               placeholder="a"
+              value={pass}
             />
             <label for="" className="label">
               Password
@@ -168,6 +183,7 @@ function Signup() {
               type={"number"}
               className="input"
               placeholder="a"
+              value={mobile}
             />
             <label for="" className="label">
               Mobile
@@ -180,6 +196,7 @@ function Signup() {
               type="text"
               className="input"
               placeholder="a"
+              value={city}
             />
             <label for="" className="label">
               City
@@ -192,6 +209,7 @@ function Signup() {
               type={"number"}
               className="input"
               placeholder="a"
+              value={pincode}
             />
             <label for="" className="label">
               Pincode

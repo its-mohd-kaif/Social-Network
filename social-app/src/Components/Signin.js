@@ -1,5 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState} from "react";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 function Signin() {
   // UseState for input values
@@ -65,7 +66,7 @@ function Signin() {
             <input
               onChange={passHandler}
               id="pass"
-              type="text"
+              type="password"
               className="input"
               placeholder="a"
             />
@@ -80,6 +81,9 @@ function Signin() {
             className="submitBtn"
             value="Login"
           />
+          <Link to={"/"}>
+            <input type="submit" className="submitBtn" value="Signup" />
+          </Link>
         </form>
       </div>
     </div>

@@ -3,7 +3,6 @@ import "./Feed.css";
 
 function Feed() {
   const [text, setText] = useState("");
-  const [file, setFile] = useState("");
   const [image, setImage] = useState(null);
 
   const [data, setData] = useState([]);
@@ -11,9 +10,6 @@ function Feed() {
   const textHandler = (e) => {
     setText(e.target.value);
   };
-  // const fileHandler=(e)=>{
-  //     setFile(e.target.value);
-  // }
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
       setImage(URL.createObjectURL(event.target.files[0]));
@@ -32,10 +28,11 @@ function Feed() {
     <div className="feedContainer">
       <h1>Feed Page</h1>
       <div className="inputField">
-        Type
-        <input className="inputText"
+        Type Something
+        <textarea
+          className="inputText"
           onChange={textHandler}
-          type={"text"}
+          type={""}
           placeholder="Type Something..."
           autoFocus
         />
