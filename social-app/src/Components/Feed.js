@@ -16,12 +16,16 @@ function Feed() {
     }
   };
   const submitHandler = (e) => {
-    let obj = {
-      text: text,
-      image: image,
-    };
-    setData([...data, obj]);
-    console.log(data);
+    if(text===""){
+      alert("Empty Field Can Not Be Added!!");
+      document.getElementById("text").focus();
+    }else{
+      let obj = {
+        text: text,
+        image: image,
+      };
+      setData([...data, obj]);
+    }
   };
 
   return (
@@ -33,8 +37,10 @@ function Feed() {
           className="inputText"
           onChange={textHandler}
           type={""}
+          id="text"
           placeholder="Type Something..."
           autoFocus
+          
         />
       </div>
 
